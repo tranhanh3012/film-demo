@@ -1,7 +1,45 @@
 import React, { Component } from "react";
+import DataFilms from "../data/DataFilms.json";
 
 export default class RenderFilm extends Component {
-  //Step 1: Design UI
+  renderFilm = () => {
+    let contentFilms = DataFilms.map((film, index) => {
+      return (
+        <div className="col-3 mt-2" key={index}>
+          <div
+            className="card text-white bg-dark ml-5"
+            style={{ width: "250px" }}
+          >
+            <img
+              style={{ width: "250px", height: "350px" }}
+              className="card-img-top"
+              src={film.img}
+              alt={film.name}
+            />
+            <div className="card-body">
+              <h4
+                className="card-title"
+                style={{ fontSize: "17px", height: "50px" }}
+              >
+                {film.name}
+              </h4>
+              <p
+                className="card-text"
+                style={{ fontSize: "13px", height: "50px" }}
+              >
+                {film.description.length > 80 ? (
+                  <p>{film.description.substr(0, 80)} ...</p>
+                ) : (
+                  <p>{film.description}</p>
+                )}
+              </p>
+            </div>
+          </div>
+        </div>
+      );
+    });
+    return contentFilms;
+  };
 
   render() {
     return (
@@ -63,6 +101,9 @@ export default class RenderFilm extends Component {
               </ul>
             </div>
           </nav>
+          <div className="container-fluid mt-5">
+            <div className="row">{this.renderFilm()}</div>
+          </div>
         </div>
       </div>
     );
