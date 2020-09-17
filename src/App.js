@@ -1,9 +1,10 @@
 import React from "react";
+import RenderFilm from "./components/RenderFilm";
 
 function App() {
   return (
     <div className="App">
-      <p>test</p>
+      <RenderFilm />
     </div>
   );
 }
